@@ -1,0 +1,16 @@
+fastapi>=0.110.0
+uvicorn>=0.28.0
+pydantic>=2.6.0
+pydantic-settings>=2.2.0
+openai>=1.14.0
+chromadb>=0.4.24
+rank-bm25>=0.2.2
+langchain-text-splitters>=0.0.1
+pypdf>=4.1.0
+beautifulsoup4>=4.12.3
+markdown>=3.5.2
+sentence-transformers>=2.5.1
+streamlit>=1.32.0
+pytest>=8.0.0
+python-dotenv>=1.0.1
+numpy>=1.26.0
