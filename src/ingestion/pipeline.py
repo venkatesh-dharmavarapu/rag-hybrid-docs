@@ -1,9 +1,10 @@
 import pickle
+import re
 from pathlib import Path
 from typing import List
 import chromadb
 import ollama
-from rank_bm25 import BM25Okapi
+from rank_bm25 import BM25Plus
 
 from src.config import settings
 from src.ingestion.chunkers import ChunkingEngine, ChunkingStrategy, TextChunk
@@ -95,9 +96,9 @@ class IngestionPipeline:
             metadatas=metadatas
         )
 
-        # 5. Build and save BM25 keyword index
-        tokenized_corpus = [c.content.lower().split() for c in unique_chunks]
-        bm25 = BM25Okapi(tokenized_corpus)
+        # 5. Build and save BM25 keyword index using BM25Plus and alphanumeric tokens
+        tokenized_corpus = [re.findall(r"\w+", c.content.lower()) for c in unique_chunks]
+        bm25 = BM25Plus(tokenized_corpus)
 
         bm25_payload = {
             "bm25": bm25,
