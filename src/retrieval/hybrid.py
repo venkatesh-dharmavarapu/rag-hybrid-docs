@@ -47,7 +47,7 @@ class HybridRetriever:
             score = self.sparse_weight * (1.0 / (self.rrf_k + rank + 1))
             fused_scores[chunk_id] = fused_scores.get(chunk_id, 0.0) + score
 
-        # 3. Sort chunks descending by fused score
+        # 3. Sort chunks descending order by fused score
         sorted_ids = sorted(fused_scores.keys(), key=lambda cid: fused_scores[cid], reverse=True)
 
         final_results = []
