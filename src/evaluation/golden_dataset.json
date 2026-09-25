@@ -1,0 +1,37 @@
+[
+  {
+    "id": "q1",
+    "question": "What HTTP header is required for authentication?",
+    "ground_truth": "The Authorization: Bearer <token> header is required.",
+    "expected_source": "sample_api.md",
+    "category": "direct_lookup"
+  },
+  {
+    "id": "q2",
+    "question": "What is the token expiration period?",
+    "ground_truth": "Tokens expire after 15 minutes of inactivity.",
+    "expected_source": "sample_api.md",
+    "category": "direct_lookup"
+  },
+  {
+    "id": "q3",
+    "question": "What error code is returned when an application exceeds 500 requests per minute?",
+    "ground_truth": "The error code is ERR_RATE_LIMIT.",
+    "expected_source": "database_ops.md",
+    "category": "exact_code"
+  },
+  {
+    "id": "q4",
+    "question": "How quickly does the database standby failover take if the primary heartbeat is lost?",
+    "ground_truth": "Failover initiates automatically within 30 seconds.",
+    "expected_source": "database_ops.md",
+    "category": "direct_lookup"
+  },
+  {
+    "id": "q5",
+    "question": "What is the company policy for employee gym membership reimbursements?",
+    "ground_truth": "INSUFFICIENT_CONTEXT: The documentation does not contain information about gym reimbursements.",
+    "expected_source": "none",
+    "category": "negative_unanswerable"
+  }
+]
