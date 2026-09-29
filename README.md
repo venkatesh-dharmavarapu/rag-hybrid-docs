@@ -71,3 +71,44 @@ Evaluated on the internal Golden Dataset (`src/evaluation/golden_dataset.json`):
   ```bash
   ollama pull nomic-embed-text
   ollama pull llama3.2
+
+### 2. Environment Setup
+Bash
+git clone [https://github.com/](https://github.com/)<your-username>/rag-hybrid-docs.git
+cd rag-hybrid-docs
+
+python -m venv .venv
+# Windows:
+.venv\Scripts\Activate.ps1
+# Linux/macOS:
+source .venv/bin/activate
+
+pip install -r requirements.txt
+cp .env.example .env
+
+### 3. Run Pipeline Tests & Ingestion
+Bash
+# Verify all modular units
+python -m pytest
+
+# Run the ingestion pipeline on the sample corpus
+python -m tests.test_pipeline
+
+### 4. Launch Services
+Run the FastAPI backend:
+
+Bash
+uvicorn src.api.main:app --host 0.0.0.0 --port 8000 --reload
+API Documentation will be available at http://localhost:8000/docs.
+
+Run the interactive Streamlit UI:
+
+Bash
+streamlit run src/ui/app.py
+
+### 5. Docker Deployment
+Bash
+docker-compose up --build
+API: http://localhost:8000
+
+Dashboard: http://localhost:8501
